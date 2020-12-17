@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <!-- <button v-on:click="test()">点击我</button> 简写 @-->
+        <!-- <button @click="test()">点击我</button> -->
+        <a href="http://www.baidu.com" @click.prevent="test($event)">点击我</a> <!-- 阻止元素默认事件 -->
+        <div @click="test3">
+            <button @click.stop="test2">点击我</button> <!-- 阻止事件冒泡 -->
+        </div>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                html: `<p style="color:red">Lee</p>`,
+            },
+            methods: {
+                test(e) {
+                    console.log(e);
+                    alert("hello")
+                },
+                test2(e) {
+                    console.log('button click', e);
+                },
+                test3() {
+                    console.log('div click');
+                }
+            }
+        });
+    </script>
+
+
+</body>
+
+</html>
