@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <h1>系统名称:{{title}}</h1>
+        <ul>
+            <li :key="product.id" v-for="(product, index) in products">
+                <span>水果名称:{{product.name}}</span>
+                <button @click="remove(index)">删除</button>
+            </li>
+        </ul>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                title: "库存管理系统",
+                products: [{
+                        id: 1,
+                        name: "草莓🍓",
+                        stock: 10
+                    },
+                    {
+                        id: 2,
+                        name: "橙子🍊",
+                        stock: 20
+                    },
+                    {
+                        id: 3,
+                        name: "香蕉🍌",
+                        stock: 30
+                    },
+                    {
+                        id: 4,
+                        name: "西瓜🍉",
+                        stock: 40
+                    },
+                    {
+                        id: 5,
+                        name: "葡萄🍇",
+                        stock: 50
+                    },
+                    {
+                        id: 6,
+                        name: "桃子🍑",
+                        stock: 60
+                    },
+                    {
+                        id: 7,
+                        name: "苹果🍎",
+                        stock: 70
+                    },
+                    {
+                        id: 8,
+                        name: "菠萝🍍",
+                        stock: 80
+                    },
+                    {
+                        id: 9,
+                        name: "梨🍐",
+                        stock: 90
+                    },
+                    {
+                        id: 10,
+                        name: "栗子🌰",
+                        stock: 100
+                    },
+                    {
+                        id: 11,
+                        name: "猕猴桃🥝",
+                        stock: 110
+                    }
+
+                ]
+            },
+            methods: {
+                remove(index) {
+                    this.products.splice(index, 1);
+                }
+            }
+
+        });
+    </script>
+
+
+</body>
+
+</html>

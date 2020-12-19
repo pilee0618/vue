@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <div v-if="loginType==='mobile'">
+            <label for="">手机号:</label>
+            <input type="text" key='1'>
+        </div>
+        <div v-else>
+            <label for="">邮箱:</label>
+            <input type="text" key='2'> <!-- 干预diff算法 因为diff算法是计算最小变动 通过key来影响diff算法 key值不同不会进行比对(直接删除旧节点产生新节点) 只会比对相同的值-->
+            <!-- 操作真实dom会非常影响效率 避免操作大量dom 推荐循环设置唯一且稳定key -->
+        </div>
+        <div>
+            <button @click="loginType = loginType === 'mobile' ? 'email' : 'mobile'">切换登录方式</button>
+        </div>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                loginType: "mobile",
+            },
+        });
+    </script>
+
+
+</body>
+
+</html>

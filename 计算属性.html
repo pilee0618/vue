@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <div>
+            <span>姓:{{firstName}}</span>
+        </div>
+        <div>
+            <span>名:{{lastName}}</span>
+        </div>
+        <div>
+            <span>全名:{{firstName+lastName}}</span>
+        </div>
+        <div>
+            <span>全名:{{fullName}}</span>
+        </div>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                firstName:"寻...",
+                lastName:"梦"
+            },
+            computed:{
+                fullName(){
+                    return this.firstName+this.lastName;
+                }
+            }
+        })
+    </script>
+
+
+</body>
+
+</html>

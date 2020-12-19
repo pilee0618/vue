@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <h1>系统名称:{{title}}</h1>
+        <ul>
+            <li v-for="(product, index) in products">
+                <span>水果名称:{{product.name}}</span>
+                <span v-if="product.stock>0">{{product.stock}}</span>
+                <span v-else>无货</span>
+                <button @click="remove(index)">删除</button>
+                <button @click="changeStock(product, product.stock + 1)">+</button>
+                <button @click="changeStock(product, product.stock - 1)">-</button>
+            </li>
+        </ul>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                title: "库存管理系统",
+                products: [{
+                        name: "草莓🍓",
+                        stock: 10
+                    },
+                    {
+                        name: "橙子🍊",
+                        stock: 20
+                    },
+                    {
+                        name: "香蕉🍌",
+                        stock: 30
+                    },
+                    {
+                        name: "西瓜🍉",
+                        stock: 40
+                    },
+                    {
+                        name: "葡萄🍇",
+                        stock: 50
+                    },
+                    {
+                        name: "桃子🍑",
+                        stock: 60
+                    },
+                    {
+                        name: "苹果🍎",
+                        stock: 70
+                    },
+                    {
+                        name: "菠萝🍍",
+                        stock: 80
+                    },
+                    {
+                        name: "梨🍐",
+                        stock: 90
+                    },
+                    {
+                        name: "栗子🌰",
+                        stock: 100
+                    },
+                    {
+                        name: "猕猴桃🥝",
+                        stock: 110
+                    }
+
+                ]
+            },
+            methods: {
+                remove(index) {
+                    this.products.splice(index, 1);
+                },
+                changeStock(product, newStock) {
+                    if (newStock < 0) {
+                        newStock = 0;
+                    }
+                    product.stock = newStock;
+                }
+            }
+
+        });
+    </script>
+
+
+</body>
+
+</html>
