@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <script>
+            var MyComp = {
+                data() {
+                    return {
+                        title: "库存管理系统",
+                    };
+                },
+                template: `<h1>{{title}}</h1>`,
+            };
+            // Vue.component("MyComp", MyComp); // 全局注册
+        </script>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                title: "库存管理系统",
+                products: [{
+                        name: "草莓🍓",
+                        stock: 10
+                    },
+                    {
+                        name: "橙子🍊",
+                        stock: 20
+                    },
+                    {
+                        name: "香蕉🍌",
+                        stock: 30
+                    },
+                    {
+                        name: "西瓜🍉",
+                        stock: 40
+                    },
+                    {
+                        name: "葡萄🍇",
+                        stock: 50
+                    },
+                    {
+                        name: "桃子🍑",
+                        stock: 60
+                    },
+                    {
+                        name: "苹果🍎",
+                        stock: 70
+                    },
+                    {
+                        name: "菠萝🍍",
+                        stock: 80
+                    },
+                    {
+                        name: "梨🍐",
+                        stock: 90
+                    },
+                    {
+                        name: "栗子🌰",
+                        stock: 100
+                    },
+                    {
+                        name: "猕猴桃🥝",
+                        stock: 110
+                    }
+
+                ]
+            },
+            methods: {
+                remove(index) {
+                    this.products.splice(index, 1);
+                },
+                changeStock(product, newStock) {
+                    if (newStock < 0) {
+                        newStock = 0;
+                    }
+                    product.stock = newStock;
+                }
+            },
+            components: { // 局部注册
+                // MyComp:MyComp,
+                MyComp
+            },
+            template: `<div><MyComp></MyComp></div>`, // 大驼峰支持大驼峰和横杠两种使用方式 而横杠则只能使用横杠
+            // template: `<div><MyComp /></div>`,
+            // template: `<div><my-comp /></div>`,
+            // template: `<div><my-comp></my-comp></div>`,
+            
+        });
+    </script>
+
+
+</body>
+
+</html>
